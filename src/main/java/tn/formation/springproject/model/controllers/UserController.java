@@ -24,13 +24,11 @@ public class UserController {
 	UserRepository userRepository;
 
 	@PostMapping("/user/ajouter")
-	public void ajouter(@RequestBody User user) {
-		try{
+	public ResponseEntity<Void> ajouter(@RequestBody User user) {
+		
 			userRepository.save(user); 
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-	
+		
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 	@PutMapping("/user/")
